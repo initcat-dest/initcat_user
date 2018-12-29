@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <!--TODO:这里换为自己的-->
+    <classPathEntry location="/Users/libo/Develop/DevelopDocument/MavenRespository/mysql/mysql-connector-java/5.1.44/mysql-connector-java-5.1.44.jar"/>
+    <context id="context1" targetRuntime="MyBatis3" defaultModelType="flat">
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <commentGenerator>
+            <property name="suppressDate" value="false"/>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://XXX:3306/initcat?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false"
+                        userId="XXX" password="XXX"/>
+
+        <javaModelGenerator targetPackage="com.initcat.persistence.auto.model"
+                            targetProject="../initcat_user_service/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="com.initcat.persistence.auto.mapping"
+                         targetProject="../initcat_user_service/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator targetPackage="com.initcat.persistence.auto.mapper"
+                             targetProject="../initcat_user_service/src/main/java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+            <!--<property name="rootInterface" value="com.xmiles.game.common.dao.BaseDaoMybatis"/>-->
+        </javaClientGenerator>
+
+        <!---
+            1、如果表id字段为主键自增曾配置：<generatedKey column="id" sqlStatement="JDBC"/>
+            2、如果当表列出现大对象(如列blob)时请使用:<columnOverride column="blob" jdbcType="VARCHAR"/>
+        -->
+        <!--<table tableName="consume_repayment_order" >
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>-->
+
+        <table tableName="comm_user_info" domainObjectName="CommUserInfo">
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        </table>
+    </context>
+</generatorConfiguration>
